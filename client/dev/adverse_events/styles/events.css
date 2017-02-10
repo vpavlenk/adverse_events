@@ -1,0 +1,16 @@
+h3 {
+  color: black;
+}
+
+tr.border_bottom > td {
+  border-bottom:1pt solid black;
+}
+
+[md-mini-fab] {
+  width: 25px;
+  height: 25px;
+}
+
+[md-mini-fab] md-icon {
+  margin-top: -5px;
+}

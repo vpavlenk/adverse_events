@@ -1,0 +1,68 @@
+<h3 md-subheader>{{title}} total records {{events.length}}</h3>
+<button md-mini-fab (click)="prev()">
+    <md-icon class="md-24">keyboard_arrow_left</md-icon>
+</button>
+Records from {{pageIndex}} to {{pageIndex+pageSize}} shown
+<button md-mini-fab (click)="next()">
+    <md-icon class="md-24">keyboard_arrow_right</md-icon>
+</button>
+
+<table>
+    <tr>
+        <td></td>
+        <td>Company Name</td>
+        <td>Received date</td>
+        <td>Receipt Date</td>
+        <td>Safety Report Id</td>
+    </tr>
+    <tbody *ngFor="let event of page">
+    <tr>
+        <td>
+            <button md-mini-fab (click)="remove(event._id)">
+                <md-icon class="md-24">delete</md-icon>
+            </button>
+        </td>
+        <td>{{event.companyNumber}}</td>
+        <td>{{event.receiveDate}}</td>
+        <td>{{event.receiptDate}}</td>
+        <td>{{event.safetyReportId}}</td>
+    </tr>
+    <tr>
+        <td colspan="5" align="center">Patient</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Age</td>
+        <td>Sex</td>
+        <td>Reaction</td>
+        <td>Drugs</td>
+    </tr>
+    <tr class="border_bottom">
+        <td></td>
+        <td>{{event.patient.age}}</td>
+        <td>{{event.patient.sex}}</td>
+        <td>
+            <div *ngFor="let reaction of event.patient.reaction">
+                {{reaction.meddraPrimaryTerm}}
+            </div>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>Indication</td>
+                    <td>Product</td>
+                    <td>Dosage</td>
+                    <td>Auth Num</td>
+                </tr>
+                <tr *ngFor="let drug of event.patient.drugs">
+                    <td>{{drug.drugIndication}}</td>
+                    <td>{{drug.medicinalProduct}}</td>
+                    <td>{{drug.DosageText}}</td>
+                    <td>{{drug.autorizationNumber}}</td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
